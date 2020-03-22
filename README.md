@@ -1,10 +1,11 @@
 ## Тестовое задание РЛ-информ
 
-### Видео пояснение 
+### Видео пояснение
+Первая часть  https://yadi.sk/i/-8SJohgNA6lYdw<br>
+Вторая часть  https://yadi.sk/i/h8F5ShJVD3Q5JQ<br>
+Третья часть https://yadi.sk/i/myZ9-6dsqHTgvQ <br>
+Четвертая часть https://yadi.sk/i/6IamxRAZDlZnEw <br>
 
-Первая часть https://yadi.sk/i/8HQTP_QFdfqfCQ <br>
-Вторая часть https://yadi.sk/i/myZ9-6dsqHTgvQ <br>
-Третья часть https://yadi.sk/i/6IamxRAZDlZnEw
 
 ### Задача:  
 
