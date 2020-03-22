@@ -46,6 +46,28 @@
                         </tbody>
                     </table>
                 </div>
+
+                <div class="mt-4 d-flex justify-content-center">
+                    <div class="pagination-container" v-if="pageCount > 1">
+                        <paginate
+                                :page-count="pageCount"
+                                :click-handler="paginationClick"
+                                :prev-text="'<'"
+                                :next-text="'>'"
+                                :page-class="'page-item'"
+                                :container-class="'pagination'"
+                                :page-link-class="'page-link'"
+                                :prev-link-class="'page-link'"
+                                :next-link-class="'page-link'"
+                                :first-last-button="true"
+                                :first-button-text="'<<'"
+                                :last-button-text="'>>'"
+                                :hide-prev-next="true"
+                        >
+                        </paginate>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -53,18 +75,22 @@
 
 <script>
     import axios from 'axios';
+    import paginate from 'vuejs-paginate'
     import server_urls from "@/infrastructure/server_urls";
 
     export default {
         name: "Home",
+        components: {
+            paginate
+        },
         async mounted() {
-            let url = server_urls.GET_USERS_URL();
-            let responseData = await axios.get(url);
-            this.users = responseData.data.pagedList;
+            await this.getUsers();
         },
         data() {
             return {
                 users: [],
+                pageCount: 0,
+
             }
         },
         methods: {
@@ -80,6 +106,15 @@
                 this.users = this.users.filter(x => {
                     return x.id !== id
                 });
+            },
+            paginationClick: async function (index) {
+                await this.getUsers(index);
+            },
+            getUsers: async function (page = 1) {
+                let url = server_urls.GET_USERS_URL() + `?page=${page}`;
+                let responseData = await axios.get(url);
+                this.users = responseData.data.pagedList;
+                this.pageCount = responseData.data.pageCount;
             }
         }
     }
